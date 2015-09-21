@@ -1,0 +1,71 @@
+ext {
+	// project defination
+	globalGroup = "org.springframework.social"
+	globalVersion = "1.0.0"
+}
+
+apply plugin: "java"
+apply plugin: "maven"
+
+project.version = globalVersion
+
+repositories {
+	mavenCentral()
+}
+
+// generate JAR
+jar {
+	baseName = project.name
+	version = project.version
+	manifest.attributes("Implementation-Title": baseName, "Implementation-Version": version)
+}
+
+test {
+	systemProperties "property": "value"
+}
+
+// JDK compatibility version
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+// slf4j를 사용하므로 commons-logging 제외
+[configurations.runtime, configurations.default]*.exclude(module: "commons-logging")
+
+// encoding source codes
+[compileJava, compileTestJava]*.options*.encoding = "UTF-8"
+
+sourceSets {
+	main.resources.srcDirs = ["src/main/resources"]
+}
+
+// upload JAR to local maven repository
+uploadArchives {
+	repositories {
+		mavenDeployer {
+			repository(url: "file://" + System.getProperty('user.home') + "/.m2/repository")
+			pom.groupId = globalGroup
+			pom.artifactId = project.name
+			pom.version = globalVersion
+		}
+	}
+	return 0
+}
+
+dependencies {
+	// SLF4J & Logback
+	compile "org.slf4j:slf4j-api:1.7.12"
+	compile "ch.qos.logback:logback-classic:1.1.3"
+
+	compile "com.fasterxml.jackson.core:jackson-annotations:2.3.2"
+	compile "javax.servlet:javax.servlet-api:3.0.1"
+	compile "org.springframework.security:spring-security-crypto:3.2.3.RELEASE"
+	compile "org.springframework.social:spring-social-config:1.1.0.RELEASE"
+	compile "com.fasterxml.jackson.core:jackson-core:2.3.2"
+	compile "com.fasterxml.jackson.core:jackson-databind:2.3.2"
+	compile "org.springframework.social:spring-social-core:1.1.0.RELEASE"
+	compile "org.springframework.social:spring-social-security:1.1.0.RELEASE"
+
+	testCompile "junit:junit:4.11"
+	testCompile "org.springframework:spring-test:4.2.0.RELEASE"
+	testCompile "org.springframework:spring-core:4.2.0.RELEASE"
+}
