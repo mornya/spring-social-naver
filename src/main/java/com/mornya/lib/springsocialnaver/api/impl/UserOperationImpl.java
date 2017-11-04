@@ -4,16 +4,16 @@
  * Copyright by mornya. All rights reserved. Since 2006.
  * This application is based by SAPP Solution.
  */
-package com.mornya.lib.spring.social.naver.api.impl;
+package com.mornya.lib.springsocialnaver.api.impl;
 
-import com.mornya.lib.spring.social.naver.api.model.UserProfileResponse;
-import com.mornya.lib.spring.social.naver.api.util.NaverApi;
+import com.mornya.lib.springsocialnaver.api.model.UserProfileResponse;
+import com.mornya.lib.springsocialnaver.api.util.NaverApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.social.InvalidAuthorizationException;
 import org.springframework.social.MissingAuthorizationException;
-import com.mornya.lib.spring.social.naver.api.abstracts.UserOperation;
-import com.mornya.lib.spring.social.naver.api.model.UserProfile;
+import com.mornya.lib.springsocialnaver.api.abstracts.UserOperation;
+import com.mornya.lib.springsocialnaver.api.model.UserProfile;
 import org.springframework.web.client.RestTemplate;
 
 public class UserOperationImpl implements UserOperation {

@@ -4,13 +4,13 @@
  * Copyright by mornya. All rights reserved. Since 2006.
  * This application is based by SAPP Solution.
  */
-package com.mornya.lib.spring.social.naver.config.xml;
+package com.mornya.lib.springsocialnaver.config.xml;
 
-import com.mornya.lib.spring.social.naver.connect.NaverConnectionFactory;
+import com.mornya.lib.springsocialnaver.connect.NaverConnectionFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.social.config.xml.AbstractProviderConfigBeanDefinitionParser;
-import com.mornya.lib.spring.social.naver.config.support.NaverApiHelper;
+import com.mornya.lib.springsocialnaver.config.support.NaverApiHelper;
 import org.springframework.social.security.provider.SocialAuthenticationService;
 
 import java.util.Map;

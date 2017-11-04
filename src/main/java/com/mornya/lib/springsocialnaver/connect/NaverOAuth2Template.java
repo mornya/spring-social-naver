@@ -4,7 +4,7 @@
  * Copyright by mornya. All rights reserved. Since 2006.
  * This application is based by SAPP Solution.
  */
-package com.mornya.lib.spring.social.naver.connect;
+package com.mornya.lib.springsocialnaver.connect;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -4,7 +4,7 @@
  * Copyright by mornya. All rights reserved. Since 2006.
  * This application is based by SAPP Solution.
  */
-package com.mornya.lib.spring.social.naver.config.xml;
+package com.mornya.lib.springsocialnaver.config.xml;
 
 import org.springframework.social.config.xml.AbstractProviderConfigBeanDefinitionParser;
 import org.springframework.social.config.xml.AbstractProviderConfigNamespaceHandler;

@@ -4,10 +4,10 @@
  * Copyright by mornya. All rights reserved. Since 2006.
  * This application is based by SAPP Solution.
  */
-package com.mornya.lib.spring.social.naver.api;
+package com.mornya.lib.springsocialnaver.api;
 
-import com.mornya.lib.spring.social.naver.api.abstracts.UserOperation;
-import com.mornya.lib.spring.social.naver.api.impl.UserOperationImpl;
+import com.mornya.lib.springsocialnaver.api.abstracts.UserOperation;
+import com.mornya.lib.springsocialnaver.api.impl.UserOperationImpl;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestFactory;

@@ -4,7 +4,7 @@
  * Copyright by mornya. All rights reserved. Since 2006.
  * This application is based by SAPP Solution.
  */
-package com.mornya.lib.spring.social.naver.api.util;
+package com.mornya.lib.springsocialnaver.api.util;
 
 import org.springframework.social.support.URIBuilder;
 import org.springframework.util.LinkedMultiValueMap;

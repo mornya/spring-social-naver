@@ -4,16 +4,16 @@
  * Copyright by mornya. All rights reserved. Since 2006.
  * This application is based by SAPP Solution.
  */
-package com.mornya.lib.spring.social.naver.config.support;
+package com.mornya.lib.springsocialnaver.config.support;
 
-import com.mornya.lib.spring.social.naver.api.NaverOAuth2ApiBinding;
+import com.mornya.lib.springsocialnaver.api.NaverOAuth2ApiBinding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.social.UserIdSource;
 import org.springframework.social.config.xml.ApiHelper;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.UsersConnectionRepository;
-import com.mornya.lib.spring.social.naver.api.Naver;
+import com.mornya.lib.springsocialnaver.api.Naver;
 
 public final class NaverApiHelper implements ApiHelper<Naver> {
 	private static final Logger LOG = LoggerFactory.getLogger(NaverApiHelper.class);

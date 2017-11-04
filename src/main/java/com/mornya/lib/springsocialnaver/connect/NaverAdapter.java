@@ -4,14 +4,14 @@
  * Copyright by mornya. All rights reserved. Since 2006.
  * This application is based by SAPP Solution.
  */
-package com.mornya.lib.spring.social.naver.connect;
+package com.mornya.lib.springsocialnaver.connect;
 
-import com.mornya.lib.spring.social.naver.api.abstracts.UserOperation;
+import com.mornya.lib.springsocialnaver.api.abstracts.UserOperation;
 import org.springframework.social.connect.ApiAdapter;
 import org.springframework.social.connect.ConnectionValues;
 import org.springframework.social.connect.UserProfile;
 import org.springframework.social.connect.UserProfileBuilder;
-import com.mornya.lib.spring.social.naver.api.Naver;
+import com.mornya.lib.springsocialnaver.api.Naver;
 
 public final class NaverAdapter implements ApiAdapter<Naver> {
 	public void setConnectionValues(final Naver naver, final ConnectionValues values) {

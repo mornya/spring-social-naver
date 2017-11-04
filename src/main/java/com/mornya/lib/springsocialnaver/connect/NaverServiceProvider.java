@@ -4,10 +4,10 @@
  * Copyright by mornya. All rights reserved. Since 2006.
  * This application is based by SAPP Solution.
  */
-package com.mornya.lib.spring.social.naver.connect;
+package com.mornya.lib.springsocialnaver.connect;
 
-import com.mornya.lib.spring.social.naver.api.Naver;
-import com.mornya.lib.spring.social.naver.api.NaverOAuth2ApiBinding;
+import com.mornya.lib.springsocialnaver.api.Naver;
+import com.mornya.lib.springsocialnaver.api.NaverOAuth2ApiBinding;
 import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
 
 public final class NaverServiceProvider extends AbstractOAuth2ServiceProvider<Naver> {
