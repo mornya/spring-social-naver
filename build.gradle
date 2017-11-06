@@ -1,51 +1,98 @@
-ext {
-	// project defination
-	globalGroup = "org.springframework.social"
-	globalVersion = "1.0.0"
-}
-
+apply plugin: "base"
+apply plugin: "idea"
 apply plugin: "java"
 apply plugin: "maven"
 
-project.version = globalVersion
+def GLOBAL_VERSION = "1.0"
+def GLOBAL_BUILD_VERSION = "2"
+def GLOBAL_GROUP = "com.mornya.lib"
+def DEFAULT_PROFILE = "local"
 
-repositories {
-	mavenCentral()
+group GLOBAL_GROUP
+version GLOBAL_VERSION
+
+ext {
+	// "gradle -Pprofile=release"으로 release 배포
+	serviceId = project.getRootProject().name
+	profile = project.hasProperty("profile") ? project.getProperties().get("profile") : DEFAULT_PROFILE
+	uploadRepository = "file://" + System.getProperty('user.home') + "/.m2/repository"
+
+	println("[Global variables]")
+	println("  serviceId: ${serviceId}")
+	println("  profile: ${profile}")
+	println("  uploadRepository: ${uploadRepository}")
+	println()
 }
 
-// generate JAR
-jar {
-	baseName = project.name
-	version = project.version
-	manifest.attributes("Implementation-Title": baseName, "Implementation-Version": version)
+buildscript {
+	repositories {
+		mavenCentral()
+		jcenter()
+	}
 }
 
-test {
-	systemProperties "property": "value"
+task wrapper(type: Wrapper) {
+	gradleVersion = "4.2.1"
 }
 
 // JDK compatibility version
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
-// slf4j를 사용하므로 commons-logging 제외
-[configurations.runtime, configurations.default]*.exclude(module: "commons-logging")
-
 // encoding source codes
 [compileJava, compileTestJava]*.options*.encoding = "UTF-8"
 
-sourceSets {
-	main.resources.srcDirs = ["src/main/resources"]
+// slf4j를 사용하므로 commons-logging 제외
+[configurations.runtime, configurations.default]*.exclude(module: "commons-logging")
+
+project.version = "${GLOBAL_VERSION}.${GLOBAL_BUILD_VERSION}"
+project.sourceSets.main.resources.srcDirs = ["src/main/resources"]
+
+// 하위 프로젝트 src/main/java, src/main/resources, src/test/java, src/test/resources 폴더 만들기
+task initSrc << {
+	if (project.hasProperty('sourceSets')) {
+		project.sourceSets*.allSource.srcDirTrees.flatten().dir.each {
+			dir ->
+				println "Make dir: ${dir}"
+				dir.mkdirs()
+		}
+	}
 }
 
-// upload JAR to local maven repository
-uploadArchives {
+// set IDEA output path
+idea {
+	module {
+		inheritOutputDirs = false
+		outputDir = file("${buildDir}/classes/main")
+		jdkName = "1.6"
+		downloadJavadoc = true
+		downloadSources = true
+	}
+}
+
+repositories {
+	jcenter()
+	mavenCentral()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
+	mavenLocal()
+}
+
+// generate JAR
+project.jar {
+	baseName = project.name
+	version = project.version
+	manifest.attributes("Implementation-Title": baseName, "Implementation-Version": version)
+}
+
+// upload JAR to repository
+project.uploadArchives {
 	repositories {
 		mavenDeployer {
-			repository(url: "file://" + System.getProperty('user.home') + "/.m2/repository")
-			pom.groupId = globalGroup
+			repository(url: uploadRepository)
+			pom.groupId = GLOBAL_GROUP
 			pom.artifactId = project.name
-			pom.version = globalVersion
+			pom.version = "${GLOBAL_VERSION}.${GLOBAL_BUILD_VERSION}"
 		}
 	}
 	return 0

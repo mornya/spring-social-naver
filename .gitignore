@@ -8,9 +8,9 @@ hs_err_pid*
 
 .gradle/
 .idea/
-**/bin/
-**/build/
-**/target/
-**/out/
+build/
+target/
+bin/
+out/
 .DS_Store
 **/*.iml

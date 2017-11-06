@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mornya.lib</groupId>
 	<artifactId>spring-social-naver</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.2</version>
 	<packaging>jar</packaging>
 	<name>Spring Social Naver</name>
 	<description>Login of Naver ID, using Naver Open APIs with Spring Social</description>
